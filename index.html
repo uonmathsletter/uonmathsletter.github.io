@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Open Thoughts</title>
+  <meta name="description" content="A public collection of statements and reflections.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Open statement</p>
+      <h1>Open Thoughts on [Your Topic Here]</h1>
+
+      <p class="lead">
+        This page collects short public reflections from students, staff, alumni, and others.
+        Submissions are reviewed manually before being added.
+      </p>
+
+      <div class="actions">
+        <a class="button primary" href="YOUR_GOOGLE_FORM_LINK_HERE" target="_blank" rel="noopener">
+          Submit your thoughts
+        </a>
+        <a class="button secondary" href="#entries">
+          Read submissions
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="statement">
+      <h2>Purpose</h2>
+      <p>
+        We are collecting public statements from people who want to share their perspective.
+        Please only submit something you are comfortable having published.
+      </p>
+
+      <p>
+        To submit, use the form above. We will review responses and manually add suitable entries
+        to this page through GitHub.
+      </p>
+    </section>
+
+    <section id="entries" class="entries-section">
+      <div class="section-heading">
+        <h2>Submissions</h2>
+        <p id="count">Loading entries...</p>
+      </div>
+
+      <div id="entries-list" class="entries-list"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      Last updated manually through GitHub.
+    </div>
+  </footer>
+
+  <script>
+    async function loadEntries() {
+      const list = document.getElementById("entries-list");
+      const count = document.getElementById("count");
+
+      try {
+        const response = await fetch("entries.json", { cache: "no-store" });
+        const entries = await response.json();
+
+        count.textContent = `${entries.length} published submission${entries.length === 1 ? "" : "s"}`;
+
+        list.innerHTML = entries.map(entry => `
+          <article class="entry">
+            <div class="entry-meta">
+              <h3>${escapeHtml(entry.name)}</h3>
+              <p>${escapeHtml(entry.role || "")}${entry.institution ? " · " + escapeHtml(entry.institution) : ""}</p>
+            </div>
+            <p class="entry-comment">${escapeHtml(entry.comment)}</p>
+          </article>
+        `).join("");
+      } catch (error) {
+        count.textContent = "Could not load entries.";
+        list.innerHTML = "";
+      }
+    }
+
+    function escapeHtml(value) {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    loadEntries();
+  </script>
+</body>
+</html>

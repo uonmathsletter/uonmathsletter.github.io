@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Example Name",
+    "role": "Student",
+    "institution": "University of Nottingham",
+    "comment": "This is an example public submission. Replace it with real entries once you have reviewed form responses."
+  },
+  {
+    "name": "Another Example",
+    "role": "Alumnus",
+    "institution": "Example Institution",
+    "comment": "You can add as many entries as needed. Keep the JSON valid."
+  }
+]
