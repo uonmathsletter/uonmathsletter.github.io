@@ -1,14 +1,14 @@
 [
   {
-    "name": "Example Name",
-    "role": "Student",
+    "name": "Reuben Menezes",
+    "role": "PhD Student",
     "institution": "University of Nottingham",
-    "comment": "This is an example public submission. Replace it with real entries once you have reviewed form responses."
+    "comment": "This short sighted decision from the University will have unspeakable ramifications on undergraduate and postgraduate study, as well as the University's reputation itself. Students and academics should not lose out as a result of the university's incompetence."
   },
   {
-    "name": "Another Example",
-    "role": "Alumnus",
-    "institution": "Example Institution",
-    "comment": "You can add as many entries as needed. Keep the JSON valid."
+    "name": "Gerda Suchodolskaite",
+    "role": "PhD Student",
+    "institution": "University of Nottingham",
+    "comment": "The university does not value its staff."
   }
 ]
